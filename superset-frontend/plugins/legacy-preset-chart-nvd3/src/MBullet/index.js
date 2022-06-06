@@ -27,13 +27,13 @@ const metadata = new ChartMetadata({
   description: t(
     'Showcases the progress of a single metric against a given target. The higher the fill, the closer the metric is to the target.',
   ),
-  name: t('Bullet Chart'),
+  name: t('MBullet Chart'),
   tags: [t('Business'), t('Legacy'), t('Report'), t('nvd3')],
   thumbnail,
   useLegacyApi: true,
 });
 
-export default class BulletChartPlugin extends ChartPlugin {
+export default class MBulletChartPlugin extends ChartPlugin {
   constructor() {
     super({
       loadChart: () => import('../ReactNVD3'),
