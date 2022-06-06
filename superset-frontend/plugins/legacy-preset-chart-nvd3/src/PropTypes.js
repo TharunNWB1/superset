@@ -67,6 +67,16 @@ export const bulletDataType = PropTypes.shape({
   ranges: PropTypes.arrayOf(PropTypes.number),
 });
 
+export const mbulletDataType = PropTypes.shape({
+  markerLabels: PropTypes.arrayOf(PropTypes.string),
+  markerLineLabels: PropTypes.arrayOf(PropTypes.string),
+  markerLines: PropTypes.arrayOf(PropTypes.number),
+  markers: PropTypes.arrayOf(PropTypes.number),
+  measures: PropTypes.arrayOf(PropTypes.number),
+  rangeLabels: PropTypes.arrayOf(PropTypes.string),
+  ranges: PropTypes.arrayOf(PropTypes.number),
+});
+
 export const annotationLayerType = PropTypes.shape({
   annotationType: PropTypes.oneOf(Object.keys(ANNOTATION_TYPES)),
   color: PropTypes.string,

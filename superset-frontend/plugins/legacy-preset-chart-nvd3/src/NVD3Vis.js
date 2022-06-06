@@ -67,6 +67,7 @@ import {
   annotationLayerType,
   boxPlotValueType,
   bulletDataType,
+  mbulletDataType,
   categoryAndValueXYType,
   rgbObjectType,
   numericXYType,
@@ -174,6 +175,7 @@ const propTypes = {
     ),
     // bullet
     bulletDataType,
+    mbulletDataType,
   ]),
   width: PropTypes.number,
   height: PropTypes.number,
@@ -194,6 +196,7 @@ const propTypes = {
     'box_plot',
     'bubble',
     'bullet',
+    'm_bullet',
     'compare',
     'column',
     'dist_bar',
@@ -352,7 +355,7 @@ function nvd3Vis(element, props) {
     if (svg.empty()) {
       svg = d3Element.append('svg');
     }
-    const height = vizType === 'bullet' ? Math.min(maxHeight, 50) : maxHeight;
+    const height = vizType === 'bullet' || vizType === 'm_bullet' ? Math.min(maxHeight, 50) : maxHeight;
     const isTimeSeries = isVizTypes(TIMESERIES_VIZ_TYPES);
 
     // Handling xAxis ticks settings
@@ -546,6 +549,16 @@ function nvd3Vis(element, props) {
         data.markers = markers;
         break;
 
+      case 'm_bullet':
+        chart = nv.models.bulletChart();
+        data.rangeLabels = rangeLabels;
+        data.ranges = ranges;
+        data.markerLabels = markerLabels;
+        data.markerLines = markerLines;
+        data.markerLineLabels = markerLineLabels;
+        data.markers = markers;
+        break;
+
       default:
         throw new Error(`Unrecognized visualization for nvd3${vizType}`);
     }
@@ -669,7 +682,7 @@ function nvd3Vis(element, props) {
       chart.interactiveLayer.tooltip.contentGenerator(d =>
         generateTimePivotTooltip(d, xAxisFormatter, yAxisFormatter),
       );
-    } else if (vizType !== 'bullet') {
+    } else if (vizType !== 'bullet' || vizType !== 'm_bullet') {
       const colorFn = getScale(colorScheme);
       chart.color(
         d => d.color || colorFn(cleanColorInput(d[colorKey]), sliceId),

@@ -128,7 +128,7 @@ export default function transformProps(chartProps) {
     yAxisFormat =
       yAxisFormat ||
       grabD3Format(datasource, metrics.length > 0 ? metrics[0] : undefined);
-  } else if (vizType === 'bullet') {
+  } else if (vizType === 'bullet' || vizType === 'm_bullet') {
     ranges = tokenizeToNumericArray(ranges) || [0, data.measures * 1.1];
     rangeLabels = tokenizeToStringArray(rangeLabels);
     markerLabels = tokenizeToStringArray(markerLabels);

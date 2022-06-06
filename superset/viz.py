@@ -1236,6 +1236,34 @@ class BulletViz(NVD3Viz):
             "measures": values.tolist(),
         }
 
+class MBulletViz(NVD3Viz):
+
+    """Based on the NVD3 bullet chart"""
+
+    viz_type = "m_bullet"
+    verbose_name = _("MBullet Chart")
+    is_timeseries = False
+
+    def query_obj(self) -> QueryObjectDict:
+        form_data = self.form_data
+        query_obj = super().query_obj()
+        self.metric = form_data[  # pylint: disable=attribute-defined-outside-init
+            "metric"
+        ]
+
+        query_obj["metrics"] = [self.metric]
+        if not self.metric:
+            raise QueryObjectValidationError(_("Pick a metric to display"))
+        return query_obj
+
+    def get_data(self, df: pd.DataFrame) -> VizData:
+        if df.empty:
+            return None
+        df["metric"] = df[[utils.get_metric_name(self.metric)]]
+        values = df["metric"].values
+        return {
+            "measures": values.tolist(),
+        }
 
 class BigNumberViz(BaseViz):
 
