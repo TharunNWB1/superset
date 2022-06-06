@@ -22,6 +22,7 @@ import BarChartPlugin from './Bar';
 import BoxPlotChartPlugin from './BoxPlot';
 import BubbleChartPlugin from './Bubble';
 import BulletChartPlugin from './Bullet';
+import MBulletChartPlugin from './MBullet';
 import CompareChartPlugin from './Compare';
 import DistBarChartPlugin from './DistBar';
 import DualLineChartPlugin from './DualLine';
@@ -40,6 +41,7 @@ export default class NVD3ChartPreset extends Preset {
         new BoxPlotChartPlugin().configure({ key: 'box_plot' }),
         new BubbleChartPlugin().configure({ key: 'bubble' }),
         new BulletChartPlugin().configure({ key: 'bullet' }),
+        new MBulletChartPlugin().configure({ key: 'm_bullet' }),
         new CompareChartPlugin().configure({ key: 'compare' }),
         new DistBarChartPlugin().configure({ key: 'dist_bar' }),
         new DualLineChartPlugin().configure({ key: 'dual_line' }),

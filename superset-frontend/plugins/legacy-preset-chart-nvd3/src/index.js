@@ -23,6 +23,7 @@ export { default as BarChartPlugin } from './Bar';
 export { default as BoxPlotChartPlugin } from './BoxPlot';
 export { default as BubbleChartPlugin } from './Bubble';
 export { default as BulletChartPlugin } from './Bullet';
+export { default as MBulletChartPlugin } from './MBullet';
 export { default as CompareChartPlugin } from './Compare';
 export { default as DistBarChartPlugin } from './DistBar';
 export { default as DualLineChartPlugin } from './DualLine';
