@@ -355,7 +355,7 @@ function nvd3Vis(element, props) {
     if (svg.empty()) {
       svg = d3Element.append('svg');
     }
-    const height = vizType === 'bullet' || vizType === 'm_bullet' ? Math.min(maxHeight, 50) : maxHeight;
+    const height = vizType === 'bullet' ? Math.min(maxHeight, 50) : maxHeight;
     const isTimeSeries = isVizTypes(TIMESERIES_VIZ_TYPES);
 
     // Handling xAxis ticks settings
